@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 public class PlayerInteractor : MonoBehaviour
 {
+    [SerializeField]public GameObject playerInventoryUI;
+    [SerializeField]public GameObject chestInventoryUI;
     private ChestInteractor nearbyChest;
     private CharacterController characterController;
     private CharacterMovement characterMovement;
@@ -28,6 +31,32 @@ public class PlayerInteractor : MonoBehaviour
         {
             isInteracting = !isInteracting;
             nearbyChest.ToggleChest();
+
+            if (chestInventoryUI != null)
+            {
+                if (chestInventoryUI.gameObject.activeSelf)
+                {
+                    chestInventoryUI.SetActive(false);
+                }
+                else
+                    chestInventoryUI.SetActive(true);
+
+            }
+        }
+    }
+
+    public void OnInventory(InputAction.CallbackContext context)
+    {
+        //Debug.Log("inventory");
+        if (playerInventoryUI != null) 
+        {
+            if (playerInventoryUI.gameObject.activeSelf)
+            {
+                playerInventoryUI.SetActive(false);
+            }
+            else 
+                playerInventoryUI.SetActive(true);
+            
         }
     }
 
