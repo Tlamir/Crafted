@@ -27,13 +27,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1636281189566600290}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.26578727, y: 0.11697431, z: -0.031847525, w: 0.9563786}
-  m_LocalPosition: {x: -0.14, y: 1.42, z: -0.94}
+  m_LocalRotation: {x: 0.2675311, y: -0.03067681, z: 0.009178459, w: 0.96301705}
+  m_LocalPosition: {x: 0.089, y: 1.509, z: -0.974}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3419222461993450835}
-  m_LocalEulerAnglesHint: {x: 31.053, y: 13.97, z: 0.085}
+  m_LocalEulerAnglesHint: {x: 31.053, y: -3.626, z: 0.085}
 --- !u!20 &2350602184548360718
 Camera:
   m_ObjectHideFlags: 0
@@ -92,7 +92,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1636281189566600290}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!114 &1381715376969930217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -286,9 +286,10 @@ GameObject:
   - component: {fileID: 8880094208700044371}
   - component: {fileID: 7130531796442749067}
   - component: {fileID: 6541538949161308994}
+  - component: {fileID: 3995812179803946231}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -384,6 +385,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: c31fcca5-3f91-450f-a96a-df5fc55ed2cc
     m_ActionName: Gameplay/Switch Camera[/Keyboard/c]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8483232287968034740, guid: 0c70f1962299e334eb33854369d180d4, type: 3}
+        m_TargetAssemblyTypeName: ChestInteractor, Assembly-CSharp
+        m_MethodName: OnInteract
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 0bfa1494-3bdc-406b-8d62-c5a491a7cb91
+    m_ActionName: Gameplay/Interact[/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Gameplay
@@ -408,13 +425,13 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 2
-  m_Radius: 0.5
+  m_Height: 1.43
+  m_Radius: 0.35
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.77, z: 0}
+  m_Center: {x: 0.13, y: 0.69, z: -0.05}
 --- !u!114 &6541538949161308994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -433,6 +450,18 @@ MonoBehaviour:
   verticalLookLimit: 80
   firstPersonCamera: {fileID: 1394089718671988142}
   thirdPersonCamera: {fileID: 2350602184548360718}
+--- !u!114 &3995812179803946231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6989780041673867828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da08847c0e355f4086ae8219c816695, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5316164525928000323
 PrefabInstance:
   m_ObjectHideFlags: 0

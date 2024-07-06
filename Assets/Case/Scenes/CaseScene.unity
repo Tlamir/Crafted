@@ -926,6 +926,17 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4760758993498129373, guid: 3bc7d8739dca08d48b830fc4ebd62f87, type: 3}
+--- !u!114 &1679692806 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3995812179803946231, guid: 4efa341290a35c34abecd913cf636272, type: 3}
+  m_PrefabInstance: {fileID: 5925890026388066307}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da08847c0e355f4086ae8219c816695, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1813719238
 GameObject:
   m_ObjectHideFlags: 0
@@ -1136,7 +1147,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3419222461993450835, guid: 4efa341290a35c34abecd913cf636272, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.11
+      value: 2.825
       objectReference: {fileID: 0}
     - target: {fileID: 3419222461993450835, guid: 4efa341290a35c34abecd913cf636272, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1173,6 +1184,18 @@ PrefabInstance:
     - target: {fileID: 6989780041673867828, guid: 4efa341290a35c34abecd913cf636272, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8880094208700044371, guid: 4efa341290a35c34abecd913cf636272, type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1679692806}
+    - target: {fileID: 8880094208700044371, guid: 4efa341290a35c34abecd913cf636272, type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnInteract
+      objectReference: {fileID: 0}
+    - target: {fileID: 8880094208700044371, guid: 4efa341290a35c34abecd913cf636272, type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerInteractor, Assembly-CSharp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

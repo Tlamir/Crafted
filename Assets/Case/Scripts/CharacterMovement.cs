@@ -14,6 +14,7 @@ public class CharacterMovement : MonoBehaviour
     private Vector2 moveInput;
     private Vector2 lookInput;
     private bool isFirstPerson = true;
+    private bool isInteracting = false;
 
     private float verticalRotation = 0f;
 
@@ -25,8 +26,11 @@ public class CharacterMovement : MonoBehaviour
 
     void Update()
     {
-        Move();
-        Look();
+        if (!isInteracting)
+        {
+            Move();
+            Look();
+        }
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -85,6 +89,11 @@ public class CharacterMovement : MonoBehaviour
             verticalRotation = Mathf.Clamp(verticalRotation, -verticalLookLimit, verticalLookLimit);
             thirdPersonCamera.transform.localRotation = Quaternion.Euler(verticalRotation, 0, 0);
         }
+    }
+
+    public void SetInteracting(bool interacting)
+    {
+        isInteracting = interacting;
     }
 
     private void SwitchToFirstPerson()
