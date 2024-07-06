@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class UIInventoryItem : MonoBehaviour
+public class UIInventoryItem : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler,IDropHandler,IDragHandler
 {
     [SerializeField]
     private Image itemImage;
@@ -52,31 +52,11 @@ public class UIInventoryItem : MonoBehaviour
         Debug.Log("Selected");
         borderImage.gameObject.SetActive(true);
     }
-
-    public void OnbeginDrag()
+    public void OnPointerDown(PointerEventData pointerData)
     {
         if (empty)
             return;
-        OnItemBeginDrag?.Invoke(this);
-    }
-    public void OnDrop()
-    {
-        if (empty)
-            return;
-        OnItemDroppedOn?.Invoke(this);
-    }
-    public void OnEndDrag()
-    {
-        if (empty)
-            return;
-        OnItemEndDrag?.Invoke(this);
-    }
-    public void OnpointerClick(BaseEventData eventData)
-    {
-        if (empty)
-            return;
-        PointerEventData pointerData=(PointerEventData)eventData;
-        if (pointerData.button==PointerEventData.InputButton.Right)
+        if (pointerData.button == PointerEventData.InputButton.Right)
         {
             OnRightMouseBtnClick?.Invoke(this);
         }
@@ -86,4 +66,29 @@ public class UIInventoryItem : MonoBehaviour
         }
     }
 
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        if (empty)
+            return;
+        OnItemBeginDrag?.Invoke(this);
+    }
+
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        if (empty)
+            return;
+        OnItemEndDrag?.Invoke(this);
+    }
+
+    public void OnDrop(PointerEventData eventData)
+    {
+        if (empty)
+            return;
+        OnItemDroppedOn?.Invoke(this);
+    }
+
+    public void OnDrag(PointerEventData eventData)
+    {
+        throw new NotImplementedException();
+    }
 }
