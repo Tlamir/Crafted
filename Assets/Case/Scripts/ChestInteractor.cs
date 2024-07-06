@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class ChestInteractor : MonoBehaviour
 {
     private bool isOpen = false;
+    private bool isPlayerNearby = false;
     [SerializeField] private Transform chestLid;
+    [SerializeField]private TextMeshProUGUI promptText;
     // Rotation settings
     public Vector3 openRotation = new Vector3(30, 0, 0); 
     public float openDuration = 1f; // Duration to open the chest
@@ -60,6 +63,34 @@ public class ChestInteractor : MonoBehaviour
     private void CloseChest()
     {
         Debug.Log("Chest closed!");
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            isPlayerNearby = true;
+            // Show UI prompt to open chest
+            if (promptText != null)
+            {
+                promptText.gameObject.SetActive(true);
+            }
+            Debug.Log("Player nearby, show UI prompt...");
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            isPlayerNearby = false;
+            // Hide UI prompt
+            if (promptText != null)
+            {
+                promptText.gameObject.SetActive(false);
+            }
+            Debug.Log("Player left, hide UI prompt...");
+        }
     }
 
     private void AnimateLid()
