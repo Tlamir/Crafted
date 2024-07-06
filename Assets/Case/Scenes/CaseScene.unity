@@ -991,6 +991,41 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1374591412
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1374591413}
+  m_Layer: 5
+  m_Name: MouseFollower
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1374591413
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1374591412}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1407963497}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1407963493
 GameObject:
   m_ObjectHideFlags: 0
@@ -1088,6 +1123,7 @@ RectTransform:
   - {fileID: 2139153957}
   - {fileID: 1831786885}
   - {fileID: 100765266}
+  - {fileID: 1374591413}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2091,6 +2127,22 @@ PrefabInstance:
     - target: {fileID: 7391287139817523144, guid: b53ddf9bbb5b6064082a4d625e5056fd, type: 3}
       propertyPath: m_SizeDelta.x
       value: -17
+      objectReference: {fileID: 0}
+    - target: {fileID: 7609957704189620960, guid: b53ddf9bbb5b6064082a4d625e5056fd, type: 3}
+      propertyPath: image
+      value: 
+      objectReference: {fileID: 21300000, guid: 8dc7032d37dcbd242ad03a111a100273, type: 3}
+    - target: {fileID: 7609957704189620960, guid: b53ddf9bbb5b6064082a4d625e5056fd, type: 3}
+      propertyPath: title
+      value: Schmitar
+      objectReference: {fileID: 0}
+    - target: {fileID: 7609957704189620960, guid: b53ddf9bbb5b6064082a4d625e5056fd, type: 3}
+      propertyPath: quanitity
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7609957704189620960, guid: b53ddf9bbb5b6064082a4d625e5056fd, type: 3}
+      propertyPath: description
+      value: Curved Sword
       objectReference: {fileID: 0}
     - target: {fileID: 8736615178149886759, guid: b53ddf9bbb5b6064082a4d625e5056fd, type: 3}
       propertyPath: m_AnchorMax.x

@@ -1063,6 +1063,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemPrefab: {fileID: -5310368810377410829, guid: c667d75f59c55e54eb98de68792efc90, type: 3}
   contentPanel: {fileID: 5260161684624507311}
+  itemDescription: {fileID: 9016940138787335376}
 --- !u!1 &7666324145585285140
 GameObject:
   m_ObjectHideFlags: 0
@@ -1150,6 +1151,7 @@ GameObject:
   - component: {fileID: 4590415823390900310}
   - component: {fileID: 4196541661042695315}
   - component: {fileID: 882923198438505666}
+  - component: {fileID: 9016940138787335376}
   m_Layer: 5
   m_Name: ItemDescriptionUI
   m_TagString: Untagged
@@ -1242,3 +1244,18 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &9016940138787335376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8288699646404547148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 083742de6f07e9f49b1ea41ec46904bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemImage: {fileID: 5552208265167526091}
+  title: {fileID: 3092455216908401255}
+  description: {fileID: 869313761963332793}
