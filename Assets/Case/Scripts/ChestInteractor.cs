@@ -2,39 +2,77 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+
 public class ChestInteractor : MonoBehaviour
 {
-    public GameObject chestUI; // Assign the chest UI GameObject in the inspector
-    public GameObject playerInventoryUI; // Assign the player inventory UI GameObject in the inspector
     private bool isOpen = false;
+    [SerializeField] private Transform chestLid;
+    // Rotation settings
+    public Vector3 openRotation = new Vector3(30, 0, 0); 
+    public float openDuration = 1f; // Duration to open the chest
+    public float closeDuration = 1f; // Duration to close the chest
+
+    private Quaternion initialRotation;
+    private Quaternion targetRotation;
+    private bool isAnimating = false;
+    private float animationTime = 0f;
+    private float animationDuration = 0f;
+
+    private void Awake()
+    {
+        if (chestLid != null)
+        {
+            initialRotation = chestLid.localRotation;
+            targetRotation = Quaternion.Euler(openRotation);
+        }
+    }
+
+    private void Update()
+    {
+        if (isAnimating)
+        {
+            AnimateLid();
+        }
+    }
 
     public void ToggleChest()
     {
+        isOpen = !isOpen;
+        isAnimating = true;
+        animationTime = 0f;
+        animationDuration = isOpen ? openDuration : closeDuration;
+
         if (isOpen)
         {
-            CloseChest();
+            OpenChest();
         }
         else
         {
-            OpenChest();
+            CloseChest();
         }
     }
 
     public void OpenChest()
     {
-        isOpen = true;
         Debug.Log("Chest opened!");
-        // Display the chest UI and player inventory UI
-        //chestUI.SetActive(true);
-        //playerInventoryUI.SetActive(true);
     }
 
     private void CloseChest()
     {
-        isOpen = false;
         Debug.Log("Chest closed!");
-        // Hide the chest UI and player inventory UI
-        //chestUI.SetActive(false);
-        //playerInventoryUI.SetActive(false);
+    }
+
+    private void AnimateLid()
+    {
+        animationTime += Time.deltaTime;
+        float t = Mathf.Clamp01(animationTime / animationDuration);
+        Quaternion targetRot = isOpen ? targetRotation : initialRotation;
+        chestLid.localRotation = Quaternion.Lerp(chestLid.localRotation, targetRot, t);
+
+        if (t >= 1f)
+        {
+            chestLid.localRotation = targetRot;
+            isAnimating = false;
+        }
     }
 }
