@@ -26,7 +26,11 @@ namespace Inventory
             PrepareUI();
             PrepareInventoryData();
         }
+        private void FixedUpdate()
+        {
+            ResetUIAfterSwapDifferentInventories();
 
+        }
         private void PrepareInventoryData()
         {
             //inventoryData.Initialize();
