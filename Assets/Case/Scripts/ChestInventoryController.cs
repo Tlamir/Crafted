@@ -10,6 +10,8 @@ namespace Inventory
 {
     public class ChestInventoryController : MonoBehaviour
     {
+        [SerializeField]
+        public MouseFollower mouseFollower;
         [SerializeField] 
         public GameObject playerInventoryUI;
         [SerializeField]
@@ -17,7 +19,7 @@ namespace Inventory
         [SerializeField]
         private PlayerInteractor playerInteractor;
         [SerializeField]
-        private InventoryScObj inventoryData;
+        public InventoryScObj inventoryData;
         public int inventorySize = 6;
         private void Start()
         {
@@ -33,6 +35,7 @@ namespace Inventory
 
         private void UpdateInventoryUI(Dictionary<int, InventoryItem> inventoryState)
         {
+            Debug.Log("Ui Resetted");
             inventoryUI.ResetAllItems();
             foreach (var item in inventoryState)
             {
@@ -51,19 +54,36 @@ namespace Inventory
 
         private void HandleDragging(int itemIndex)
         {
+            ResetUIAfterSwapDifferentInventories();
+
             InventoryItem inventoryItem = inventoryData.GetItemAt(itemIndex);
             if (inventoryItem.IsEmpty)
                 return;
             inventoryUI.CreateDraggedItem(inventoryItem.item.ItemImage, inventoryItem.quantity,itemIndex);
+            ResetUIAfterSwapDifferentInventories();
+
         }
 
-        private void HandleSwapItems(int arg1, int arg2)
+        private void HandleSwapItems(int arg1, int arg2 )
         {
+            ResetUIAfterSwapDifferentInventories();
             inventoryData.SwapItems(arg1, arg2);
+            ResetUIAfterSwapDifferentInventories();
+        }
+
+        public void ResetUIAfterSwapDifferentInventories()
+        {
+            inventoryUI.ResetAllItems();
+            foreach (var item in inventoryData.GetCurrentInventoryState())
+            {
+                inventoryUI.UpdateData(item.Key, item.Value.item.ItemImage, item.Value.quantity);
+            }
         }
 
         private void HandleDescriptionRequest(int itemIndex)
         {
+            ResetUIAfterSwapDifferentInventories();
+
             InventoryItem inventoryItem = inventoryData.GetItemAt(itemIndex);
             if (inventoryItem.IsEmpty)
             {
@@ -97,6 +117,7 @@ namespace Inventory
                     else
                     {
                         playerInteractor.chestInventoryUI.SetActive(true);
+                        inventoryUI.ResetAllItems();
                         foreach (var item in inventoryData.GetCurrentInventoryState())
                         {
                             inventoryUI.UpdateData(item.Key, item.Value.item.ItemImage, item.Value.quantity);

@@ -1,3 +1,5 @@
+using Inventory;
+using Inventory.Model;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -6,6 +8,8 @@ using UnityEngine.InputSystem;
 
 public class ChestInteractor : MonoBehaviour
 {
+    [SerializeField]
+    private InventoryScObj chestInventorySelf;
     [SerializeField]
     private Transform chestLid;
     private bool isOpen = false;
@@ -20,6 +24,8 @@ public class ChestInteractor : MonoBehaviour
     private bool isAnimating = false;
     private float animationTime = 0f;
     private float animationDuration = 0f;
+
+    public InventoryScObj ChestInventorySelf { get => chestInventorySelf; set => chestInventorySelf = value; }
 
     private void Awake()
     {
@@ -71,6 +77,10 @@ public class ChestInteractor : MonoBehaviour
                 other.gameObject.GetComponent<PlayerInteractor>().ChestInteractionText.SetActive(true);
             }
             Debug.Log("Player nearby, show UI prompt...");
+            other.gameObject.GetComponent<ChestInventoryController>().inventoryData=chestInventorySelf;
+            other.gameObject.GetComponent<ChestInventoryController>().mouseFollower.chestInventory=chestInventorySelf;
+            //Change player inventory ScObj other inv
+            other.gameObject.GetComponent<InventoryController>().inventoryData.otherInventory=chestInventorySelf;
         }
     }
     private void OnTriggerExit(Collider other)
@@ -99,4 +109,5 @@ public class ChestInteractor : MonoBehaviour
             isAnimating = false;
         }
     }
+    
 }

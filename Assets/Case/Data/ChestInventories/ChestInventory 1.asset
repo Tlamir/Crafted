@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 91c6b53cc2196e74d861ad971bd5ea12, type: 3}
-  m_Name: ChestInventory
+  m_Name: ChestInventory 1
   m_EditorClassIdentifier: 
   otherInventory: {fileID: 11400000, guid: 8437f42e363e2df49bd2a3d1754a2cdd, type: 2}
   DraggedItemIndex: 4

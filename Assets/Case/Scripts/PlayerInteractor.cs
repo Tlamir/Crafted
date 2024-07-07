@@ -8,9 +8,12 @@ using UnityEngine.UIElements;
 
 public class PlayerInteractor : MonoBehaviour
 {
-    [SerializeField]public GameObject playerInventoryUI;
-    [SerializeField]public GameObject chestInventoryUI;
-    [SerializeField]public GameObject ChestInteractionText;
+    [SerializeField]
+    public GameObject playerInventoryUI;
+    [SerializeField]
+    public GameObject chestInventoryUI;
+    [SerializeField]
+    public GameObject ChestInteractionText;
 
     private CharacterController characterController;
     private CharacterMovement characterMovement;

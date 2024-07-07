@@ -474,6 +474,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0114dd92755cf842a1249528fdd387e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ChestInventories: {fileID: 11400000, guid: eb671e8aa0f8bde43adda0cd0b5acc30, type: 2}
   chestPrefab: {fileID: 3166065641769704291, guid: 0c70f1962299e334eb33854369d180d4, type: 3}
   numberOfChestsToSpawn: 5
   spawnAreaSize: {x: 20, y: 0.5, z: 20}
@@ -2074,11 +2075,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84d56548ce096bf44970a53eb21f704d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mouseFollower: {fileID: 1374591414}
   playerInventoryUI: {fileID: 7216815267752383003}
-  inventorySize: 6
   inventoryUI: {fileID: 7609957702578084592}
   playerInteractor: {fileID: 1679692806}
   inventoryData: {fileID: 11400000, guid: 99e1445f656cc764fb315f6e48bf12ea, type: 2}
+  inventorySize: 6
 --- !u!1 &1813719238
 GameObject:
   m_ObjectHideFlags: 0

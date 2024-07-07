@@ -15,7 +15,7 @@ namespace Inventory
         [SerializeField]
         private UIInventoryPage inventoryUI;
         [SerializeField]
-        private InventoryScObj inventoryData;
+        public InventoryScObj inventoryData;
         public int inventorySize = 10;
 
         private void Start()

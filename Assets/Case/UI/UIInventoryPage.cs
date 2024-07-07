@@ -95,6 +95,7 @@ namespace Inventory.UI
             Debug.Log("EndDrag");
             ResetDraggedItem();
 
+
         }
 
         private void HandleSwap(UIInventoryItem item)

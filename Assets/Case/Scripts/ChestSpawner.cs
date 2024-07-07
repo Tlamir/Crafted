@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class ChestSpawner : MonoBehaviour
 {
+    [SerializeField]
+    private ChestInventoriesScObj ChestInventories;
     public GameObject chestPrefab;
     public int numberOfChestsToSpawn = 10;
     public Vector3 spawnAreaSize = new Vector3(10f, 0.5f, 10f); // Size of the area where chests can spawn
@@ -19,6 +21,7 @@ public class ChestSpawner : MonoBehaviour
         {
             Vector3 randomPosition = GetRandomPosition();
             Instantiate(chestPrefab, randomPosition, Quaternion.identity);
+            chestPrefab.GetComponent<ChestInteractor>().ChestInventorySelf = ChestInventories.ChestInventories[i];
         }
     }
 
