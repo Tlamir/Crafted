@@ -6,9 +6,10 @@ using UnityEngine.InputSystem;
 
 public class ChestInteractor : MonoBehaviour
 {
+    [SerializeField]
+    private Transform chestLid;
     private bool isOpen = false;
     private bool isPlayerNearby = false;
-    [SerializeField] private Transform chestLid;
     // Rotation settings
     public Vector3 openRotation = new Vector3(30, 0, 0); 
     public float openDuration = 1f; // Duration to open the chest

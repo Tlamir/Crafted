@@ -10,27 +10,24 @@ namespace Inventory
 {
     public class InventoryController : MonoBehaviour
     {
-        [SerializeField] public GameObject playerInventoryUI;
-        public int inventorySize = 10;
+        [SerializeField] 
+        public GameObject playerInventoryUI;
         [SerializeField]
         private UIInventoryPage inventoryUI;
-
         [SerializeField]
         private InventoryScObj inventoryData;
-
+        public int inventorySize = 10;
 
         private void Start()
         {
             PrepareUI();
             PrepareInventoryData();
         }
-
         private void PrepareInventoryData()
         {
             //inventoryData.Initialize();
             inventoryData.OnInventoryChanged += UpdateInventoryUI;          
         }
-
         private void UpdateInventoryUI(Dictionary<int, InventoryItem> inventoryState)
         {
             inventoryUI.ResetAllItems();
@@ -39,7 +36,6 @@ namespace Inventory
                 inventoryUI.UpdateData(item.Key, item.Value.item.ItemImage, item.Value.quantity);
             }
         }
-
         private void PrepareUI()
         {
             inventoryUI.InitializeInventoryUI(inventoryData.Size);
@@ -48,7 +44,6 @@ namespace Inventory
             inventoryUI.OnStartDragging += HandleDragging;
             inventoryUI.OnItemActionRequested += HandleItemActionRequest;
         }
-
         private void HandleDragging(int itemIndex)
         {
             InventoryItem inventoryItem = inventoryData.GetItemAt(itemIndex);
@@ -56,7 +51,6 @@ namespace Inventory
                 return;
             inventoryUI.CreateDraggedItem(inventoryItem.item.ItemImage, inventoryItem.quantity,itemIndex);
         }
-
         private void HandleSwapItems(int arg1, int arg2)
         {
             inventoryData.SwapItems(arg1, arg2);
@@ -72,17 +66,13 @@ namespace Inventory
             }
             ItemScObj item = inventoryItem.item;
             inventoryUI.UpdateDescription(itemIndex, item.ItemImage, item.name, item.Description);
-
-
         }
         private void HandleItemActionRequest(int itemIndex)
         {
 
-
         }
         public void OnInventory(InputAction.CallbackContext context)
         {
-            //Debug.Log("inventory");
             if (playerInventoryUI != null)
             {
                 if (playerInventoryUI.gameObject.activeSelf)

@@ -10,17 +10,15 @@ namespace Inventory
 {
     public class ChestInventoryController : MonoBehaviour
     {
-        [SerializeField] public GameObject playerInventoryUI;
-        public int inventorySize = 6;
+        [SerializeField] 
+        public GameObject playerInventoryUI;
         [SerializeField]
         private UIInventoryPage inventoryUI;
         [SerializeField]
         private PlayerInteractor playerInteractor;
-
         [SerializeField]
         private InventoryScObj inventoryData;
-
-
+        public int inventorySize = 6;
         private void Start()
         {
             PrepareUI();
