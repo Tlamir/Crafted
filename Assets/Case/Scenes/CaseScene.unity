@@ -257,13 +257,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Controls
-
-    Move: [WASD]
-
-    Interact: [E]
-
-    Inventory:[I]'
+  m_text: "Controls \nMove: [WASD],[Left Joystick]\nInteract: [E],[B Button joystick]\nInventory:[I],[Select
+    Button joystick]\nChange Camera:[C],[Y Button joystick]"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
@@ -326,7 +321,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -40.022232, y: 0, z: -112.59926, w: -125.25255}
+  m_margin: {x: -40.022232, y: 0, z: -300.88223, w: -125.25255}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1333,8 +1328,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56641a4e663a0cd41b89025a49fe3ff0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventorySize: 30
+  playerInventoryUI: {fileID: 2139153956}
+  inventorySize: 4
   inventoryUI: {fileID: 2139153961}
+  inventoryData: {fileID: 11400000, guid: 8437f42e363e2df49bd2a3d1754a2cdd, type: 2}
+  inventoryItems:
+  - quantity: 5
+    item: {fileID: 11400000, guid: 021fc1eabd7bd3a41842d2d8c82d3727, type: 2}
+  - quantity: 1
+    item: {fileID: 11400000, guid: b8903625d674057439ad6f53224fb519, type: 2}
+  - quantity: 0
+    item: {fileID: 0}
+  - quantity: 0
+    item: {fileID: 0}
 --- !u!1 &1703291876 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7216815266140600843, guid: 2a7c3c12d05ee564e8b21d704b9157cf, type: 3}
@@ -2306,6 +2312,10 @@ PrefabInstance:
       value: Curved Sword
       objectReference: {fileID: 0}
     - target: {fileID: 7609957704189620960, guid: b53ddf9bbb5b6064082a4d625e5056fd, type: 3}
+      propertyPath: defaultSprite
+      value: 
+      objectReference: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 7609957704189620960, guid: b53ddf9bbb5b6064082a4d625e5056fd, type: 3}
       propertyPath: mouseFollower
       value: 
       objectReference: {fileID: 1374591414}
@@ -2413,7 +2423,7 @@ PrefabInstance:
     - target: {fileID: 8880094208700044371, guid: 4efa341290a35c34abecd913cf636272, type: 3}
       propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1679692806}
+      objectReference: {fileID: 1679692811}
     - target: {fileID: 8880094208700044371, guid: 4efa341290a35c34abecd913cf636272, type: 3}
       propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -2432,7 +2442,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8880094208700044371, guid: 4efa341290a35c34abecd913cf636272, type: 3}
       propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: PlayerInteractor, Assembly-CSharp
+      value: InventoryController, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8880094208700044371, guid: 4efa341290a35c34abecd913cf636272, type: 3}
       propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName

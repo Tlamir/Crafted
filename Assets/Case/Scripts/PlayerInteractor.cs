@@ -43,22 +43,7 @@ public class PlayerInteractor : MonoBehaviour
 
             }
         }
-    }
-
-    public void OnInventory(InputAction.CallbackContext context)
-    {
-        //Debug.Log("inventory");
-        if (playerInventoryUI != null) 
-        {
-            if (playerInventoryUI.gameObject.activeSelf)
-            {
-                playerInventoryUI.SetActive(false);
-            }
-            else 
-                playerInventoryUI.SetActive(true);
-            
-        }
-    }
+    }  
 
     private void OnTriggerEnter(Collider other)
     {
