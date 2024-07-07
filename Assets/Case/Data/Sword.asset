@@ -15,5 +15,7 @@ MonoBehaviour:
   <IsStackable>k__BackingField: 0
   <MaxStackSize>k__BackingField: 1
   <Name>k__BackingField: Sword
-  <Description>k__BackingField: Short Sword
+  <Description>k__BackingField: 'Short Sword double edged
+
+    +6 Damage'
   <ItemImage>k__BackingField: {fileID: 21300000, guid: 791ad7bc39134e842837d7ebfdb1f77b, type: 3}

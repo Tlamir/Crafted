@@ -15,5 +15,7 @@ MonoBehaviour:
   <IsStackable>k__BackingField: 0
   <MaxStackSize>k__BackingField: 1
   <Name>k__BackingField: Shovel
-  <Description>k__BackingField: Dig deep, find the treasure
+  <Description>k__BackingField: 'Dig deep, find the treasure
+
+    +2 Damage'
   <ItemImage>k__BackingField: {fileID: 21300000, guid: d61df672b90be244e836c7648534f4c3, type: 3}

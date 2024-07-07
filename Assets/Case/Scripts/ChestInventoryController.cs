@@ -29,7 +29,6 @@ namespace Inventory
         private void FixedUpdate()
         {
             ResetUIAfterSwapDifferentInventories();
-
         }
         private void PrepareInventoryData()
         {
@@ -58,19 +57,15 @@ namespace Inventory
 
         private void HandleDragging(int itemIndex)
         {
-            ResetUIAfterSwapDifferentInventories();
-
             InventoryItem inventoryItem = inventoryData.GetItemAt(itemIndex);
             if (inventoryItem.IsEmpty)
                 return;
             inventoryUI.CreateDraggedItem(inventoryItem.item.ItemImage, inventoryItem.quantity,itemIndex);
-            ResetUIAfterSwapDifferentInventories();
 
         }
 
         private void HandleSwapItems(int arg1, int arg2 )
         {
-            ResetUIAfterSwapDifferentInventories();
             inventoryData.SwapItems(arg1, arg2);
             ResetUIAfterSwapDifferentInventories();
         }
@@ -86,7 +81,6 @@ namespace Inventory
 
         private void HandleDescriptionRequest(int itemIndex)
         {
-            ResetUIAfterSwapDifferentInventories();
 
             InventoryItem inventoryItem = inventoryData.GetItemAt(itemIndex);
             if (inventoryItem.IsEmpty)
