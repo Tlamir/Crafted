@@ -128,10 +128,10 @@ namespace Inventory.UI
             OnStartDragging?.Invoke(index);
         }
 
-        public void CreateDraggedItem(Sprite sprite, int quantity)
+        public void CreateDraggedItem(Sprite sprite, int quantity,int index)
         {
             mouseFollower.Toggle(true);
-            mouseFollower.SetData(sprite, quantity);
+            mouseFollower.SetData(sprite, quantity,index);
         }
 
         private void HandleItemSelection(UIInventoryItem item)

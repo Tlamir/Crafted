@@ -9,7 +9,6 @@ public class ChestInteractor : MonoBehaviour
     private bool isOpen = false;
     private bool isPlayerNearby = false;
     [SerializeField] private Transform chestLid;
-    [SerializeField]private TextMeshProUGUI promptText;
     // Rotation settings
     public Vector3 openRotation = new Vector3(30, 0, 0); 
     public float openDuration = 1f; // Duration to open the chest
@@ -71,9 +70,10 @@ public class ChestInteractor : MonoBehaviour
         {
             isPlayerNearby = true;
             // Show UI prompt to open chest
-            if (promptText != null)
+            if (other.gameObject.GetComponent<PlayerInteractor>().ChestInteractionText != null)
             {
-                promptText.gameObject.SetActive(true);
+                Debug.Log("EnableText");
+                other.gameObject.GetComponent<PlayerInteractor>().ChestInteractionText.SetActive(true);
             }
             Debug.Log("Player nearby, show UI prompt...");
         }
@@ -85,9 +85,10 @@ public class ChestInteractor : MonoBehaviour
         {
             isPlayerNearby = false;
             // Hide UI prompt
-            if (promptText != null)
+            if (other.gameObject.GetComponent<PlayerInteractor>().ChestInteractionText != null)
             {
-                promptText.gameObject.SetActive(false);
+                other.gameObject.GetComponent<PlayerInteractor>().ChestInteractionText.SetActive(false);
+
             }
             Debug.Log("Player left, hide UI prompt...");
         }

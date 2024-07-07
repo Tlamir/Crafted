@@ -1,6 +1,7 @@
 using Inventory;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
@@ -10,6 +11,7 @@ public class PlayerInteractor : MonoBehaviour
     [SerializeField]public GameObject playerInventoryUI;
     [SerializeField]public GameObject chestInventoryUI;
     [SerializeField]public InventoryController chestInventoryController;
+    [SerializeField]public GameObject ChestInteractionText;
     public ChestInteractor nearbyChest;
     private CharacterController characterController;
     private CharacterMovement characterMovement;
@@ -67,4 +69,5 @@ public class PlayerInteractor : MonoBehaviour
             Debug.Log("Chest out of range.");
         }
     }
+
 }

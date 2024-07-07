@@ -10,6 +10,10 @@ namespace Inventory.Model
     public class InventoryScObj : ScriptableObject
     {
         [SerializeField]
+        public InventoryScObj otherInventory;
+        [SerializeField]
+        public int DraggedItemIndex=-1;
+        [SerializeField]
         private List<InventoryItem> inventoryItems;
 
         [field: SerializeField]
@@ -65,10 +69,29 @@ namespace Inventory.Model
 
         public void SwapItems(int arg1, int arg2)
         {
+            Debug.Log("arg1" + arg1);
+            if (arg1 == -1)
+            {
+                if (DraggedItemIndex>-1)
+                {
+                    SwapItemsBetweenInventories(otherInventory, DraggedItemIndex, this, arg2);
+                }
+                return;
+            }
             InventoryItem item1 = inventoryItems[arg1];
             inventoryItems[arg1] = inventoryItems[arg2];
             inventoryItems[arg2] = item1;
             InformAboutChange();
+        }
+
+        public void SwapItemsBetweenInventories(InventoryScObj inventory1, int index1, InventoryScObj inventory2, int index2)
+        {
+            InventoryItem tempItem = inventory1.GetItemAt(index1);
+            inventory1.inventoryItems[index1] = inventory2.GetItemAt(index2);
+            inventory2.inventoryItems[index2] = tempItem;
+
+            inventory1.InformAboutChange();
+            inventory2.InformAboutChange();
         }
 
         private void InformAboutChange()
