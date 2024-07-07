@@ -8,12 +8,14 @@ using UnityEngine.InputSystem;
 
 namespace Inventory
 {
-    public class InventoryController : MonoBehaviour
+    public class ChestInventoryController : MonoBehaviour
     {
         [SerializeField] public GameObject playerInventoryUI;
-        public int inventorySize = 10;
+        public int inventorySize = 6;
         [SerializeField]
         private UIInventoryPage inventoryUI;
+        [SerializeField]
+        private PlayerInteractor playerInteractor;
 
         [SerializeField]
         private InventoryScObj inventoryData;
@@ -81,28 +83,31 @@ namespace Inventory
 
         }
 
-
-        public void OnInventory(InputAction.CallbackContext context)
+        public void OnInteract(InputAction.CallbackContext context)
         {
-            //Debug.Log("inventory");
-            if (playerInventoryUI != null)
+            if (context.performed && playerInteractor.nearbyChest != null)
             {
-                if (playerInventoryUI.gameObject.activeSelf)
+                playerInteractor.isInteracting = !playerInteractor.isInteracting;
+                playerInteractor.nearbyChest.ToggleChest();
+
+                if (playerInteractor.chestInventoryUI != null)
                 {
-                    playerInventoryUI.SetActive(false);
-                    inventoryUI.ResetSelection();  
-                }
-                else
-                {
-                    playerInventoryUI.SetActive(true);
-                    foreach (var item in inventoryData.GetCurrentInventoryState())
+                    if (playerInteractor.chestInventoryUI.gameObject.activeSelf)
                     {
-                        inventoryUI.UpdateData(item.Key, item.Value.item.ItemImage, item.Value.quantity);
+                        playerInteractor.chestInventoryUI.SetActive(false);
+                    }
+                    else
+                    {
+                        playerInteractor.chestInventoryUI.SetActive(true);
+                        foreach (var item in inventoryData.GetCurrentInventoryState())
+                        {
+                            inventoryUI.UpdateData(item.Key, item.Value.item.ItemImage, item.Value.quantity);
+                        }
                     }
 
                 }
-
             }
         }
+
     }
 }

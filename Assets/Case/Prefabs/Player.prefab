@@ -287,6 +287,8 @@ GameObject:
   - component: {fileID: 7130531796442749067}
   - component: {fileID: 6541538949161308994}
   - component: {fileID: 3995812179803946231}
+  - component: {fileID: 1854547759892653869}
+  - component: {fileID: 6815113788329819303}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -387,8 +389,8 @@ MonoBehaviour:
     m_ActionName: Gameplay/Switch Camera[/Keyboard/c]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8483232287968034740, guid: 0c70f1962299e334eb33854369d180d4, type: 3}
-        m_TargetAssemblyTypeName: ChestInteractor, Assembly-CSharp
+      - m_Target: {fileID: 3995812179803946231}
+        m_TargetAssemblyTypeName: PlayerInteractor, Assembly-CSharp
         m_MethodName: OnInteract
         m_Mode: 0
         m_Arguments:
@@ -401,6 +403,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 0bfa1494-3bdc-406b-8d62-c5a491a7cb91
     m_ActionName: Gameplay/Interact[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1854547759892653869}
+        m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
+        m_MethodName: OnInventory
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 6b93dd16-59a0-4978-a8b3-1daf278d79ed
+    m_ActionName: Gameplay/Inventory[/Keyboard/i]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Gameplay
@@ -462,6 +480,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2da08847c0e355f4086ae8219c816695, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInventoryUI: {fileID: 0}
+  chestInventoryUI: {fileID: 0}
+  chestInventoryController: {fileID: 6815113788329819303}
+--- !u!114 &1854547759892653869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6989780041673867828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56641a4e663a0cd41b89025a49fe3ff0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerInventoryUI: {fileID: 0}
+  inventorySize: 4
+  inventoryUI: {fileID: 0}
+  inventoryData: {fileID: 11400000, guid: 8437f42e363e2df49bd2a3d1754a2cdd, type: 2}
+  inventoryItems:
+  - quantity: 5
+    item: {fileID: 11400000, guid: 021fc1eabd7bd3a41842d2d8c82d3727, type: 2}
+  - quantity: 1
+    item: {fileID: 11400000, guid: b8903625d674057439ad6f53224fb519, type: 2}
+  - quantity: 0
+    item: {fileID: 0}
+  - quantity: 0
+    item: {fileID: 0}
+--- !u!114 &6815113788329819303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6989780041673867828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56641a4e663a0cd41b89025a49fe3ff0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerInventoryUI: {fileID: 0}
+  inventorySize: 10
+  inventoryUI: {fileID: 0}
+  inventoryData: {fileID: 11400000, guid: 99e1445f656cc764fb315f6e48bf12ea, type: 2}
+  inventoryItems: []
 --- !u!1001 &5316164525928000323
 PrefabInstance:
   m_ObjectHideFlags: 0

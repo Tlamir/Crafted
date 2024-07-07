@@ -546,7 +546,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3097662875595172930}
   m_HandleRect: {fileID: 8736615178149886759}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -958,7 +958,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5335721957363687367
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1064,6 +1064,8 @@ MonoBehaviour:
   itemPrefab: {fileID: -5310368810377410829, guid: c667d75f59c55e54eb98de68792efc90, type: 3}
   contentPanel: {fileID: 5260161684624507311}
   itemDescription: {fileID: 9016940138787335376}
+  mouseFollower: {fileID: 0}
+  defaultSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!1 &7666324145585285140
 GameObject:
   m_ObjectHideFlags: 0

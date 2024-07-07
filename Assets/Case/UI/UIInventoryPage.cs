@@ -79,6 +79,7 @@ namespace Inventory.UI
         public void UpdateData(int itemIndex,
                 Sprite itemImage, int itemQuantity)
         {
+            Debug.Log("Update data pls");
             if (listOfUIItems.Count > itemIndex)
             {
                 listOfUIItems[itemIndex].SetData(itemImage, itemQuantity);
@@ -103,12 +104,7 @@ namespace Inventory.UI
             if (index < -1)
             {
                 return;
-            }
-            if(listOfUIItems[index].empty == true) // Check if the slot being swapped into is empty
-            {
-                // Set a default picture for the slot being swapped from
-                UpdateData(currentlyDraggedItemIndex, defaultSprite, 0);
-            }
+            }           
             OnSwapItems?.Invoke(currentlyDraggedItemIndex, index);
             HandleItemSelection(item);
 

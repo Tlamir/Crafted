@@ -1,3 +1,4 @@
+using Inventory;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,10 +9,11 @@ public class PlayerInteractor : MonoBehaviour
 {
     [SerializeField]public GameObject playerInventoryUI;
     [SerializeField]public GameObject chestInventoryUI;
-    private ChestInteractor nearbyChest;
+    [SerializeField]public InventoryController chestInventoryController;
+    public ChestInteractor nearbyChest;
     private CharacterController characterController;
     private CharacterMovement characterMovement;
-    private bool isInteracting = false;
+    public bool isInteracting = false;
 
     void Awake()
     {
@@ -39,7 +41,10 @@ public class PlayerInteractor : MonoBehaviour
                     chestInventoryUI.SetActive(false);
                 }
                 else
+                {
                     chestInventoryUI.SetActive(true);
+                    //chestInventoryController.GetComponent<InventoryController>().RefreshDataUI();
+                }
 
             }
         }
