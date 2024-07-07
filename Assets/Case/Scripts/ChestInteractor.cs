@@ -28,7 +28,6 @@ public class ChestInteractor : MonoBehaviour
             targetRotation = Quaternion.Euler(openRotation);
         }
     }
-
     private void Update()
     {
         if (isAnimating)
@@ -36,7 +35,6 @@ public class ChestInteractor : MonoBehaviour
             AnimateLid();
         }
     }
-
     public void ToggleChest()
     {
         isOpen = !isOpen;
@@ -53,17 +51,14 @@ public class ChestInteractor : MonoBehaviour
             CloseChest();
         }
     }
-
     public void OpenChest()
     {
         Debug.Log("Chest opened!");
     }
-
     private void CloseChest()
     {
         Debug.Log("Chest closed!");
     }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -72,13 +67,11 @@ public class ChestInteractor : MonoBehaviour
             // Show UI prompt to open chest
             if (other.gameObject.GetComponent<PlayerInteractor>().ChestInteractionText != null)
             {
-                Debug.Log("EnableText");
                 other.gameObject.GetComponent<PlayerInteractor>().ChestInteractionText.SetActive(true);
             }
             Debug.Log("Player nearby, show UI prompt...");
         }
     }
-
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -88,12 +81,10 @@ public class ChestInteractor : MonoBehaviour
             if (other.gameObject.GetComponent<PlayerInteractor>().ChestInteractionText != null)
             {
                 other.gameObject.GetComponent<PlayerInteractor>().ChestInteractionText.SetActive(false);
-
             }
             Debug.Log("Player left, hide UI prompt...");
         }
     }
-
     private void AnimateLid()
     {
         animationTime += Time.deltaTime;

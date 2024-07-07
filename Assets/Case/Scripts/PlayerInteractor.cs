@@ -10,11 +10,12 @@ public class PlayerInteractor : MonoBehaviour
 {
     [SerializeField]public GameObject playerInventoryUI;
     [SerializeField]public GameObject chestInventoryUI;
-    [SerializeField]public InventoryController chestInventoryController;
     [SerializeField]public GameObject ChestInteractionText;
-    public ChestInteractor nearbyChest;
+
     private CharacterController characterController;
     private CharacterMovement characterMovement;
+
+    public ChestInteractor nearbyChest;
     public bool isInteracting = false;
 
     void Awake()
@@ -22,20 +23,17 @@ public class PlayerInteractor : MonoBehaviour
         characterController = GetComponent<CharacterController>();
         characterMovement = GetComponent<CharacterMovement>();
     }
-
     void Update()
     {
         characterController.enabled = !isInteracting;
         characterMovement.SetInteracting(isInteracting);
     }
-
     public void OnInteract(InputAction.CallbackContext context)
     {
         if (context.performed && nearbyChest != null)
         {
             isInteracting = !isInteracting;
             nearbyChest.ToggleChest();
-
             if (chestInventoryUI != null)
             {
                 if (chestInventoryUI.gameObject.activeSelf)
@@ -47,11 +45,9 @@ public class PlayerInteractor : MonoBehaviour
                     chestInventoryUI.SetActive(true);
                     //chestInventoryController.GetComponent<InventoryController>().RefreshDataUI();
                 }
-
             }
         }
     }  
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Chest"))
@@ -60,7 +56,6 @@ public class PlayerInteractor : MonoBehaviour
             Debug.Log("Chest detected.");
         }
     }
-
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Chest"))
@@ -69,5 +64,4 @@ public class PlayerInteractor : MonoBehaviour
             Debug.Log("Chest out of range.");
         }
     }
-
 }

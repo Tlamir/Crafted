@@ -69,7 +69,7 @@ namespace Inventory.Model
 
         public void SwapItems(int arg1, int arg2)
         {
-            Debug.Log("arg1" + arg1);
+            //If item is dragged from another inventory
             if (arg1 == -1)
             {
                 if (DraggedItemIndex>-1)
@@ -83,7 +83,6 @@ namespace Inventory.Model
             inventoryItems[arg2] = item1;
             InformAboutChange();
         }
-
         public void SwapItemsBetweenInventories(InventoryScObj inventory1, int index1, InventoryScObj inventory2, int index2)
         {
             InventoryItem tempItem = inventory1.GetItemAt(index1);
@@ -116,7 +115,6 @@ namespace Inventory.Model
 
             };
         }
-
         public static InventoryItem GetEmptyItem()
             => new InventoryItem
             {

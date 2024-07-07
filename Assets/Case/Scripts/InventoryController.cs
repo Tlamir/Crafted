@@ -80,8 +80,6 @@ namespace Inventory
 
 
         }
-
-
         public void OnInventory(InputAction.CallbackContext context)
         {
             //Debug.Log("inventory");

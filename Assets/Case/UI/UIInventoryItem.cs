@@ -28,19 +28,15 @@ namespace Inventory.UI
             ResetData();
             Deselect();
         }
-
         public void ResetData()
         {
             itemImage.gameObject.SetActive(false);
             empty = true;
         }
-
         public void Deselect()
         {
             borderImage.gameObject.SetActive(false);
-
         }
-
         public void SetData(Sprite sprite, int quantity)
         {
             Debug.Log("SettingData");
@@ -52,7 +48,6 @@ namespace Inventory.UI
 
         public void Select()
         {
-            Debug.Log("Selected");
             borderImage.gameObject.SetActive(true);
         }
         public void OnPointerDown(PointerEventData pointerData)

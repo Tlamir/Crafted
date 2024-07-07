@@ -40,7 +40,6 @@ public class ChestSpawner : MonoBehaviour
         }
         else
         {
-            // Fallback to a default height if raycast fails (shouldn't happen if terrain is properly set up)
             randomPosition.y = Random.Range(minSpawnHeight, maxSpawnHeight);
         }
 

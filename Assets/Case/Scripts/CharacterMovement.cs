@@ -23,7 +23,6 @@ public class CharacterMovement : MonoBehaviour
         controller = GetComponent<CharacterController>();
         SwitchToFirstPerson();
     }
-
     void Update()
     {
         if (!isInteracting)
@@ -32,7 +31,6 @@ public class CharacterMovement : MonoBehaviour
             Look();
         }
     }
-
     public void OnMove(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
@@ -57,13 +55,11 @@ public class CharacterMovement : MonoBehaviour
             }
         }
     }
-
     private void Move()
     {
         Vector3 move = transform.right * moveInput.x + transform.forward * moveInput.y;
         controller.Move(move * speed * Time.deltaTime);
     }
-
     private void Look()
     {
         float mouseX = lookInput.x;
@@ -90,19 +86,16 @@ public class CharacterMovement : MonoBehaviour
             thirdPersonCamera.transform.localRotation = Quaternion.Euler(verticalRotation, 0, 0);
         }
     }
-
     public void SetInteracting(bool interacting)
     {
         isInteracting = interacting;
     }
-
     private void SwitchToFirstPerson()
     {
         isFirstPerson = true;
         firstPersonCamera.enabled = true;
         thirdPersonCamera.enabled = false;
     }
-
     private void SwitchToThirdPerson()
     {
         isFirstPerson = false;

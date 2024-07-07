@@ -25,20 +25,17 @@ public class MouseFollower : MonoBehaviour
         canvas = transform.root.GetComponent<Canvas>();
         item = GetComponentInChildren<UIInventoryItem>();
     }
-
     public void SetData(Sprite sprite, int quantity,int index)
     {
         item.SetData(sprite, quantity);
         UpdateDragIndex(index);
     }
-
     private void UpdateDragIndex(int index)
     {
         DraggedItemIndex = index;
         chestInventory.DraggedItemIndex = index;
         PlayerInventory.DraggedItemIndex = index;
     }
-
     void Update()
     {
         Vector2 position;
@@ -50,7 +47,6 @@ public class MouseFollower : MonoBehaviour
                 );
         transform.position = canvas.transform.TransformPoint(position);
     }
-
     public void Toggle(bool val)
     {
         Debug.Log($"Item toggled {val}");
