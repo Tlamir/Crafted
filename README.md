@@ -16,5 +16,4 @@
 - **Multiple Camera Modes**  
   - Easily switch between **First-Person Shooter (FPS)** and **Third-Person Shooter (TPS)** perspectives.  
 
-- **Gamepad Support**  
-  - Full support for controllers using the **Unity Input System**.  
+- **Gamepad Support** 
