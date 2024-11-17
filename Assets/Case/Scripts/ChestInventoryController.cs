@@ -1,7 +1,6 @@
 using Inventory.Model;
 using Inventory.UI;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -10,35 +9,28 @@ namespace Inventory
 {
     public class ChestInventoryController : MonoBehaviour
     {
-        [SerializeField]
-        public MouseFollower mouseFollower;
-        [SerializeField] 
-        public GameObject playerInventoryUI;
-        [SerializeField]
-        private UIInventoryPage inventoryUI;
-        [SerializeField]
-        private PlayerInteractor playerInteractor;
-        [SerializeField]
-        public InventoryScObj inventoryData;
+        [SerializeField] public MouseFollower mouseFollower;
+        [SerializeField] public GameObject playerInventoryUI;
+        [SerializeField] private UIInventoryPage inventoryUI;
+        [SerializeField] private PlayerInteractor playerInteractor;
+        [SerializeField] public InventoryScObj inventoryData;
         public int inventorySize = 6;
+
         private void Start()
         {
             PrepareUI();
             PrepareInventoryData();
         }
-        private void FixedUpdate()
-        {
-            ResetUIAfterSwapDifferentInventories();
-        }
+
         private void PrepareInventoryData()
         {
-            //inventoryData.Initialize();
-            inventoryData.OnInventoryChanged += UpdateInventoryUI;          
+            // Ensure the inventory system notifies about every change
+            inventoryData.OnInventoryChanged += UpdateInventoryUI;
         }
 
         private void UpdateInventoryUI(Dictionary<int, InventoryItem> inventoryState)
         {
-            Debug.Log("Ui Resetted");
+            Debug.Log("UI Updated");
             inventoryUI.ResetAllItems();
             foreach (var item in inventoryState)
             {
@@ -58,45 +50,40 @@ namespace Inventory
         private void HandleDragging(int itemIndex)
         {
             InventoryItem inventoryItem = inventoryData.GetItemAt(itemIndex);
-            if (inventoryItem.IsEmpty)
-                return;
-            inventoryUI.CreateDraggedItem(inventoryItem.item.ItemImage, inventoryItem.quantity,itemIndex);
+            if (inventoryItem.IsEmpty) return;
 
+            inventoryUI.CreateDraggedItem(
+                inventoryItem.item.ItemImage,
+                inventoryItem.quantity,
+                itemIndex
+            );
         }
 
-        private void HandleSwapItems(int arg1, int arg2 )
+        private void HandleSwapItems(int sourceIndex, int targetIndex)
         {
-            inventoryData.SwapItems(arg1, arg2);
-            ResetUIAfterSwapDifferentInventories();
-        }
+            // Perform the swap and notify the inventory system
+            inventoryData.SwapItems(sourceIndex, targetIndex);
 
-        public void ResetUIAfterSwapDifferentInventories()
-        {
-            inventoryUI.ResetAllItems();
-            foreach (var item in inventoryData.GetCurrentInventoryState())
-            {
-                inventoryUI.UpdateData(item.Key, item.Value.item.ItemImage, item.Value.quantity);
-            }
+            // Ensure UI reflects the updated inventory data
+            UpdateInventoryUI(inventoryData.GetCurrentInventoryState());
         }
 
         private void HandleDescriptionRequest(int itemIndex)
         {
-
             InventoryItem inventoryItem = inventoryData.GetItemAt(itemIndex);
             if (inventoryItem.IsEmpty)
             {
                 inventoryUI.ResetSelection();
                 return;
             }
+
             ItemScObj item = inventoryItem.item;
             inventoryUI.UpdateDescription(itemIndex, item.ItemImage, item.name, item.Description);
-
-
         }
+
         private void HandleItemActionRequest(int itemIndex)
         {
-
-
+            // Placeholder for item-specific actions
         }
 
         public void OnInteract(InputAction.CallbackContext context)
@@ -108,23 +95,15 @@ namespace Inventory
 
                 if (playerInteractor.chestInventoryUI != null)
                 {
-                    if (playerInteractor.chestInventoryUI.gameObject.activeSelf)
-                    {
-                        playerInteractor.chestInventoryUI.SetActive(false);
-                    }
-                    else
-                    {
-                        playerInteractor.chestInventoryUI.SetActive(true);
-                        inventoryUI.ResetAllItems();
-                        foreach (var item in inventoryData.GetCurrentInventoryState())
-                        {
-                            inventoryUI.UpdateData(item.Key, item.Value.item.ItemImage, item.Value.quantity);
-                        }
-                    }
+                    bool isActive = playerInteractor.chestInventoryUI.gameObject.activeSelf;
+                    playerInteractor.chestInventoryUI.SetActive(!isActive);
 
+                    if (!isActive)
+                    {
+                        UpdateInventoryUI(inventoryData.GetCurrentInventoryState());
+                    }
                 }
             }
         }
-
     }
 }
